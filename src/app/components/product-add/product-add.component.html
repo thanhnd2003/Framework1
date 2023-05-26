@@ -1,0 +1,8 @@
+<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+    <label for="">Name</label>
+    <input type="text" name="" id="" formControlName="name">
+    <label for="">Price</label>
+    <input type="text" name="" id="" formControlName="price">
+    <button type="submit" [disabled]="!productForm.valid">Save</button>
+
+</form>
