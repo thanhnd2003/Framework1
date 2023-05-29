@@ -20,17 +20,29 @@ export class ProductEditComponent {
     private productService: ProductService,
     private route: ActivatedRoute
   ) {
-    // this.route.paramMap.subscribe((param) => {
-    //   const id = param.get('id');
-    //   this.productService.getProduct(id).subscribe((product) => {
-    //     this.product = product;
-    //     this.productForm.patchValue({
-    //       name:product.name,
-    //       price:product.price
-    //     })
-    //   });
-    // });
+    this.route.paramMap.subscribe((param) => {
+      const id = param.get('id');
+      this.productService.getProduct(id).subscribe((product) => {
+        this.product = product;
+        this.productForm.patchValue({
+          name:product.name,
+          price:product.price
+        })
+      })
+    })
   }
 
-  onHandleEdit() {}
+  onHandleEdit() {
+    if(this.productForm.valid){
+      const product : IProduct = {
+        id:this.product.id,
+        name:this.productForm.value.name || '',
+        price:this.productForm.value.price || 0,
+      };
+      this.productService.updateProduct(product).subscribe((data) => {
+        console.log(data);
+        
+      })
+    }
+  }
 }

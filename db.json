@@ -8,9 +8,8 @@
     },
     {
       "id": 2,
-      "name": "Product B update",
-      "price": 200,
-      "img": "https://picsum.photos/200/200"
+      "name": "Product B update 1",
+      "price": 200
     },
     {
       "id": 3,
